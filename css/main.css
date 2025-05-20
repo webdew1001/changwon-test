@@ -130,13 +130,13 @@ body.scroll {
 }
 
 #v_left {
-    left: 0;
+    left: -1px;
     border-right: 1px solid #ffffff;
 }
 
 #v_right {
     left: auto;
-    right: 0;
+    right: -1px;
     border-left: 1px solid #ffffff;
 }
 
