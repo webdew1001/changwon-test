@@ -742,7 +742,7 @@ div.intro .emailup-info p {
 
 .floor_plan .tab_menu li {
     width: calc(100% / 6);
-    height: 60px;
+    height: 46px;
     text-align: center;
     border-top: 1px solid #E8E8E8;
     border-left: 1px solid #E8E8E8;
@@ -1529,11 +1529,11 @@ div.intro .emailup-info p {
     }
 
     .floor_plan .floor_plan_title h4 {
-        font-size: 48px;
+        font-size: 36px;
     }
 
     .floor_plan .floor_plan_title p {
-        font-size: 20px;
+        font-size: 18px;
         margin-left: 16px;
     }
 
@@ -1552,13 +1552,14 @@ div.intro .emailup-info p {
     .floor_plan .floor_plan_wrap .floor {
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: 24px;
+        margin-top: 18px;
         row-gap: 8px;
     }
 
     .floor_plan .floor_plan_wrap .floor ul {
         width: calc(100% / 3);
         border-bottom: 0;
+        padding-bottom: 16px;
     }
 
     .floor_plan .floor_plan_wrap .floor ul li strong {
