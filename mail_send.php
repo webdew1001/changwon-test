@@ -5,7 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phoneNumber = nl2br($_POST["phoneNumber"],);
     $dateNumber = nl2br($_POST["dateNumber"]); 
     // $email = "manai20@naver.com";
-    $email = "psh0260@naver.com";
+    // $email = "psh0260@naver.com";
+    $email = "dmsgktn1020@naver.com";
     
 
     // 📌받을 이메일 주소 (네이버 메일)  
