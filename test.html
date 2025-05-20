@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>창원 메가시티</title>
+    <link rel="stylesheet" href="css/reset.css">
+
+    <style>
+        #frame {
+            width: 100%;
+            height: 100vh;
+            /* background-color: #000; */
+            background: url('img/main_img2.jpg') center top / cover no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #text_anime {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        #text_anime span {
+            position: relative;
+            display: inline-block;
+        }
+
+        #text_anime span._ {
+            color: #fff;
+        }
+
+        #text_mask {
+            width: 100%;
+            height: 40%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #text_top,
+        #text_bottom {
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            width: 90%;
+            height: 0;
+            background: #fff;
+        }
+
+        #text_top {
+            top: 0;
+        }
+
+        #text_bottom {
+            top: auto;
+            bottom: 0;
+        }
+
+        #text_bottom div {
+            right: 0;
+        }
+
+        #top_sq,
+        #bottom_sq {
+            width: 5px;
+            height: 5px;
+            background: #ffffff;
+            position: absolute;
+        }
+
+        #top_sq {
+            bottom: -2px;
+        }
+
+        #bottom_sq {
+            top: -2px;
+        }
+
+        #top_line,
+        #bottom_line {
+            width: 100%;
+            height: 1px;
+            background: #ffffff;
+            position: absolute;
+        }
+
+        #top_line {
+            bottom: 0;
+        }
+
+        #bottom_line {
+            top: 0;
+        }
+
+        #v_left,
+        #v_right {
+            width: 50%;
+            height: 100vh;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        #v_left {
+            left: 0;
+            border-right: 1px solid #ffffff;
+        }
+
+        #v_right {
+            left: auto;
+            right: 0;
+            border-left: 1px solid #ffffff;
+        }
+
+        #main_content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            padding: 0;
+            overflow: hidden;
+            background-image: url(img/main_img2.jpg);
+            background-size: cover;
+            background-position: center center;
+            text-align: center;
+            transition: all, 1.0s 0s, background 7s 0.2s;
+        }
+
+      #main_content::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('img/intro_bg.png') center bottom / 100%;
+      }
+        #wrap {
+            padding-top: 100vh;
+            position: relative;
+
+            z-index: 99;
+        }
+        #main_content .text {
+            width: 100%; 
+            transition: 0.7s;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            z-index: 99;
+        }
+        
+        
+         #main_content .text > div {
+            opacity: 0;
+            color: #fff;
+
+         }
+        #main_content .text .text1 {
+            font-size: 32px;
+            transition: font-size 0.8s 1s, transform 0.5s 1.5s, opacity 0.3s;
+            transform: translateY(50px);
+        }
+         
+         #main_content .text .text1.active {
+            opacity: 1;
+            transform: translateY(0);
+            font-size: 20px;
+        }
+        #main_content .text .text-image {
+            transition: 0.7s 1.5s;
+            transform: scale(2.3);
+        }
+        #main_content .text .text-image.active {
+            
+            opacity: 1;
+            transform: scale(1);
+         }
+         #main_content .text .text2 {
+            transition: 0.5s 2s;
+            font-size: 24px;
+            margin-top: 36px;
+         }
+         #main_content .text .text2.active {
+            opacity: 1;
+         }
+    </style>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/TweenMax.min.js"></script>
+    <script>
+        $(function () {
+            var $opening = $("#opening"),
+                $text = $("#text_anime span"),
+                $top = $("#text_top"),
+                $bottom = $("#text_bottom"),
+                $top_sq = $("#top_sq"),
+                $top_line = $("#top_line"),
+                $bottom_sq = $("#bottom_sq"),
+                $bottom_line = $("#bottom_line"),
+                $v_left = $("#v_left"),
+                $v_right = $("#v_right"),
+                $main = $("#main_content"),
+                tl_opening = new TimelineLite();
+
+            tl_opening
+                .staggerFrom(
+                    $text,
+                    0.5,
+                    {
+                        top: "+=25px",
+                        rotation: "-=-3deg",
+                        alpha: 0,
+                        scale: 0.8,
+                        ease: Power1.easeOut
+                    },
+                    0.1
+                )
+                .from($top_sq, 1, { y: -100, alpha: 0, ease: Bounce.easeOut, delay: 1 })
+                .from($bottom_sq, 1, { y: 100, alpha: 0, ease: Bounce.easeOut }, "-=1")
+                .from([$top_line, $bottom_line], 0.5, { width: 0, ease: Power4.easeOut })
+                .to([$top_sq, $bottom_sq], 0.1, { display: "none" })
+                .to([$top, $bottom], 0.5, { height: "50%", ease: Power1.easeIn })
+                .to($top_line, 0.1, { display: "none" }, "-=0.1")
+                .to($bottom_line, 0.1, { rotation: -90, ease: Power1.easeIn }, "+=0.1")
+                .from([$v_left, $v_right], 0.05, { display: "none" })
+                .to($opening, 0.05, { display: "none" })
+                .to($main, 0.05, { display: "block", backgroundPosition: "center bottom" })
+                .to([$v_left, $v_right], 0.6, { width: 0, ease: Expo.easeOut });
+
+            var restart = $("button");
+            restart.click(function () {
+                tl_opening.restart();
+            });
+
+            setTimeout(function(){
+                $('#main_content .text .text1').addClass('active')
+            }, 7000)
+            setTimeout(function(){
+                $('#main_content .text .text-image').addClass('active')
+            }, 8500)
+
+            setTimeout(function(){
+                $('#main_content .text .text2').addClass('active')
+            }, 9500)
+
+        })
+    </script>
+</head>
+
+<body>
+    <div id="frame">
+        <div id="opening">
+            <div id="text_anime">
+
+                <span>창</span>
+                <span>원</span>
+                <span>&nbsp;그</span>
+                <span>&nbsp;위</span>
+                <span>,</span>
+                <span>또&nbsp;</span>
+                <span>하</span>
+                <span>나</span>
+                <span>의&nbsp;</span>
+                <span>세</span>
+                <span>상</span>
+            </div>
+            <div id="text_mask">
+                <div id="text_top">
+                    <div id="top_sq"></div>
+                    <div id="top_line"></div>
+                </div>
+                <div id="text_bottom">
+                    <div id="bottom_sq"></div>
+                    <div id="bottom_line"></div>
+                </div>
+            </div>
+        </div>
+        <div id="main_content">
+            <div class="text">
+                <div class="text1">모든 것의 정점에서 새시대를 열다</div>
+                <div class="text2">창원 그 위, 또 하나의 세상</div>
+                <div class="text-image"><img src="img/megacity-text.png" alt="메가시티의 탄생"></div>
+            </div>
+        </div>
+        <div id="v_left"></div>
+        <div id="v_right"></div>
+    </div>
+    <div id="wrap">
+        <main id="main">
+            <section class="main_visual">
+                <img src="img/main_visual.jpg" alt="">
+            </section>
+        </main>
+    </div><!-- #wrap end -->
+</body>
+
+</html>

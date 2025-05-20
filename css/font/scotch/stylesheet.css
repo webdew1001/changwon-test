@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Scotch-Display-Cond-Rm';
+    src: url('ScotchDisplayCond-Rm.eot');
+    src: url('ScotchDisplayCond-Rm.eot?#iefix') format('embedded-opentype'),
+        url('ScotchDisplayCond-Rm.woff2') format('woff2'),
+        url('ScotchDisplayCond-Rm.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

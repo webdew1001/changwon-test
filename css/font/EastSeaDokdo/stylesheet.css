@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'EastSeaDokdo';
+    src: url('EastSeaDokdo-Regular.eot');
+    src: url('EastSeaDokdo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('EastSeaDokdo-Regular.woff2') format('woff2'),
+        url('EastSeaDokdo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
