@@ -197,7 +197,7 @@ body.scroll {
 }
 
 #main_content .text .text-image {
-    transition: 0.7s 4s;
+    transition: 0.7s 3.8s;
     transform: scale(4);
 }
 
@@ -208,7 +208,7 @@ body.scroll {
 }
 
 #main_content .text .text2 {
-    transition: 0.5s 1s;
+    transition: 0.5s 0.8s;
     font-size: 60px;
     margin-top: 36px;
     font-family: 'EastSeaDokdo';
